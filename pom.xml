@@ -9,7 +9,7 @@
 
     <groupId>de.eonas.portal</groupId>
     <artifactId>opencmsmoduleswar</artifactId>
-    <version>9.0.0.2</version>
+    <version>9.0.0.3-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>Opencms-Webapp containing all opencms Modules</name>
     <description>to be used for overlaying</description>
