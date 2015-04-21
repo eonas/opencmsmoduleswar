@@ -102,7 +102,7 @@
         <tokenizer class="solr.StandardTokenizerFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_en.txt" enablePositionIncrements="true" />
         <filter class="solr.LowerCaseFilterFactory"/>
-     <filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
         <filter class="solr.KeywordMarkerFilterFactory" protected="protwords.txt"/>
         <filter class="solr.PorterStemFilterFactory"/>
       </analyzer>
@@ -221,7 +221,173 @@
       </analyzer>
     </fieldType>
 
-	<!-- Spell-checking / Suggestion field, using maxShingleSize=4 -->
+    <!-- Bulgarian -->
+    <fieldType name="text_bg" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/> 
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_bg.txt" enablePositionIncrements="true"/>
+        <filter class="solr.BulgarianStemFilterFactory"/>       
+      </analyzer>
+    </fieldType>
+
+    <!-- Czech -->
+    <fieldType name="text_cs" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_cz.txt" enablePositionIncrements="true"/>
+        <filter class="solr.CzechStemFilterFactory"/>       
+      </analyzer>
+    </fieldType>
+
+    <!-- Danish -->
+    <fieldType name="text_da" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_da.txt" format="snowball" enablePositionIncrements="true"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Danish"/>       
+      </analyzer>
+    </fieldType>
+
+    <!-- Estonian -->
+    <fieldType name="text_et" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_et.txt" enablePositionIncrements="true"/>
+        <filter class="solr.HunspellStemFilterFactory" dictionary="dict/et_EE.dic" affix="dict/et_EE.aff" ignoreCase="true" />
+      </analyzer>
+    </fieldType>
+
+    <!-- Lithuanian -->
+    <fieldType name="text_lt" class="solr.TextField" positionIncrementGap="100">
+	<analyzer>
+          <tokenizer class="solr.StandardTokenizerFactory"/>
+          <filter class="solr.LowerCaseFilterFactory"/>
+          <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_lt.txt" enablePositionIncrements="true" />
+        <filter class="solr.HunspellStemFilterFactory" dictionary="dict/lt.dic" affix="dict/lt.aff" ignoreCase="true" />
+        </analyzer>
+    </fieldType>
+
+    <!-- Latvian -->
+    <fieldType name="text_lv" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_lv.txt" enablePositionIncrements="true"/>
+        <filter class="solr.LatvianStemFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- Dutch -->
+    <fieldType name="text_nl" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_nl.txt" format="snowball" enablePositionIncrements="true"/>
+        <filter class="solr.StemmerOverrideFilterFactory" dictionary="lang/stemdict_nl.txt" ignoreCase="false"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Dutch"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- Norwegian -->
+    <fieldType name="text_no" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_no.txt" format="snowball" enablePositionIncrements="true"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Norwegian"/>
+        <!-- less aggressive: <filter class="solr.NorwegianLightStemFilterFactory"/> -->
+        <!-- singular/plural: <filter class="solr.NorwegianMinimalStemFilterFactory"/> -->
+      </analyzer>
+    </fieldType>
+
+    <!-- Polish -->
+    <fieldType name="text_pl" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_pl.txt" enablePositionIncrements="true"/>
+        <filter class="solr.HunspellStemFilterFactory" dictionary="dict/pl_PL.dic" affix="dict/pl_PL.aff" ignoreCase="true" />
+        <!-- possible alternative with extra Jars solr-analysis-extras-4.3.0.jar and lucene-analyzers-stempel-4.3.0.jar: <filter class="solr.StempelPolishStemFilterFactory" /> -->
+      </analyzer>
+    </fieldType>
+
+    <!-- Portugese -->
+    <fieldType name="text_pt" class="solr.TextField" positionIncrementGap="100">
+      <analyzer>
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_pt.txt" enablePositionIncrements="true"/>
+        <filter class="solr.PortugueseStemFilterFactory"/> <!-- alternatives: solr.PortugueseLightStemFilterFactory or solr.PortugueseMinimalStemFilterFactory -->
+      </analyzer>
+    </fieldType>
+
+    <!-- Romanian -->
+    <fieldType name="text_ro" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_ro.txt" enablePositionIncrements="true"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Romanian"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- Russian -->
+    <fieldType name="text_ru" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_ru.txt" format="snowball" enablePositionIncrements="true"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Russian"/>
+        <!-- less aggressive: <filter class="solr.RussianLightStemFilterFactory"/> -->
+      </analyzer>
+    </fieldType>
+
+    <!-- Slovakian -->
+    <fieldType name="text_sk" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_sk.txt" enablePositionIncrements="true"/>
+        <filter class="solr.HunspellStemFilterFactory" dictionary="dict/sk_SK.dic" affix="dict/sk_SK.aff" ignoreCase="true" />
+      </analyzer>
+    </fieldType>
+
+    <!-- Serbian -->
+    <fieldType name="text_sr" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_sr.txt" enablePositionIncrements="true"/>
+        <filter class="solr.HunspellStemFilterFactory" dictionary="dict/sr-Latn.dic" affix="dict/sr-Latn.aff" ignoreCase="true" />
+      </analyzer>
+    </fieldType>
+
+    <!-- Swedish -->
+    <fieldType name="text_sv" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="true" words="lang/stopwords_sv.txt" format="snowball" enablePositionIncrements="true"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Swedish"/>
+        <!-- less aggressive: <filter class="solr.SwedishLightStemFilterFactory"/> -->
+      </analyzer>
+    </fieldType>
+
+    <!-- Turkish -->
+    <fieldType name="text_tr" class="solr.TextField" positionIncrementGap="100">
+      <analyzer> 
+        <tokenizer class="solr.StandardTokenizerFactory"/>
+        <filter class="solr.TurkishLowerCaseFilterFactory"/>
+        <filter class="solr.StopFilterFactory" ignoreCase="false" words="lang/stopwords_tr.txt" enablePositionIncrements="true"/>
+        <filter class="solr.SnowballPorterFilterFactory" language="Turkish"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- Spell-checking / Suggestion field, using maxShingleSize=4 -->
     <fieldType name="spell" class="solr.TextField" positionIncrementGap="100">
       <analyzer>
         <tokenizer class="solr.StandardTokenizerFactory"/>
@@ -276,6 +442,22 @@
    <field name="text_fr"             type="text_fr"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for French text fields -->
    <field name="text_hu"             type="text_hu"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Hungarian text fields -->
    <field name="text_it"             type="text_it"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Italian text fields -->
+   <field name="text_bg"             type="text_bg"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Bulgarian text fields -->
+   <field name="text_cs"             type="text_cs"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Czech text fields -->
+   <field name="text_da"             type="text_da"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Danish text fields -->
+   <field name="text_et"             type="text_et"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Estonian text fields -->
+   <field name="text_lt"             type="text_lt"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Lithunian text fields -->
+   <field name="text_lv"             type="text_lv"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Latvien text fields -->
+   <field name="text_nl"             type="text_nl"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Dutch text fields -->
+   <field name="text_no"             type="text_no"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Norwegian text fields -->
+   <field name="text_pl"             type="text_pl"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Polish text fields -->
+   <field name="text_pt"             type="text_pt"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Portuguese text fields -->
+   <field name="text_ro"             type="text_ro"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Romanian text fields -->
+   <field name="text_ru"             type="text_ru"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Russian text fields -->
+   <field name="text_sk"             type="text_sk"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Slovakian text fields -->
+   <field name="text_sr"             type="text_sr"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Serbian text fields -->
+   <field name="text_sv"             type="text_sv"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Svedish text fields -->
+   <field name="text_tr"             type="text_tr"      indexed="true"  stored="false" multiValued="true"/><!-- Catchall for Turkish text fields -->
 
    <dynamicField name="*_excerpt"    type="text_general" indexed="true"  stored="true" termVectors="on" termPositions="on" termOffsets="on" />
    <dynamicField name="*_exact"      type="string"       indexed="true"  stored="false"/>
@@ -293,6 +475,22 @@
    <dynamicField name="*_fr"         type="text_fr"      indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_hu"         type="text_hu"      indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_it"         type="text_it"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_bg"         type="text_bg"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_cs"         type="text_cs"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_da"         type="text_da"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_et"         type="text_et"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_lt"         type="text_lt"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_lv"         type="text_lv"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_nl"         type="text_nl"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_no"         type="text_no"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_pl"         type="text_pl"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_pt"         type="text_pt"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_ro"         type="text_ro"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_ru"         type="text_ru"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_sk"         type="text_sk"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_sr"         type="text_sr"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_sv"         type="text_sv"      indexed="true"  stored="true" multiValued="true"/>
+   <dynamicField name="*_tr"         type="text_tr"      indexed="true"  stored="true" multiValued="true"/>
    <dynamicField name="*_b"          type="boolean"      indexed="true"  stored="true"/>
    <dynamicField name="*_f"          type="float"        indexed="true"  stored="true"/>
    <dynamicField name="*_d"          type="double"       indexed="true"  stored="true"/>
@@ -319,6 +517,22 @@
  <copyField source="*_fr"      dest="text_fr"/>
  <copyField source="*_hu"      dest="text_hu"/>
  <copyField source="*_it"      dest="text_it"/>
+ <copyField source="*_bg"      dest="text_bg"/>
+ <copyField source="*_cs"      dest="text_cs"/>
+ <copyField source="*_da"      dest="text_da"/>
+ <copyField source="*_et"      dest="text_et"/>
+ <copyField source="*_lt"      dest="text_lt"/>
+ <copyField source="*_lv"      dest="text_lv"/>
+ <copyField source="*_nl"      dest="text_nl"/>
+ <copyField source="*_no"      dest="text_no"/>
+ <copyField source="*_pl"      dest="text_pl"/>
+ <copyField source="*_pt"      dest="text_pt"/>
+ <copyField source="*_ro"      dest="text_ro"/>
+ <copyField source="*_ru"      dest="text_ru"/>
+ <copyField source="*_sk"      dest="text_sk"/>
+ <copyField source="*_sr"      dest="text_sr"/>
+ <copyField source="*_sv"      dest="text_sv"/>
+ <copyField source="*_tr"      dest="text_tr"/>
  <copyField source="text_*"    dest="text"/>
  <copyField source="*_prop"    dest="text" />
  <copyField source="content"   dest="text" />
